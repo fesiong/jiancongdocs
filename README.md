@@ -45,7 +45,8 @@ URL路由规则需要写到对应的路由规则文件中
 4. 其他建议  
 公共方法,尽量写在Library里面。  
 有疑问可以发issue
-
+5. 简从的使用帮助  
+微信模板消息需要到app/Library/Weixin.php中设置。
 
 [phalcon]:https://github.com/phalcon/cphalcon/
 [phalcondocs]:https://docs.phalconphp.com/zh/latest/index.html
