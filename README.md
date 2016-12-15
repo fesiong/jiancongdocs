@@ -11,6 +11,98 @@ CentOS6.5 + PHP5.6 + Nginx1.10 + Mysql5.7
 [Jquery-WeUI][jquery-weui]  
 [weui][weui]
 
+##简从本地调试环境安装
+- linux 安装方法  
+**需要安装的组件
+```bash
+- 安装phalcon  
+- 安装memcache  
+- 安装mb_string  
+- 安装mcrypt  
+- 安装Imagick  
+- php版本要求5.5+  
+- mysql要求5.6+  
+```
+全新安装方法: 
+ ```bash
+wget http://v1.seowhy.com/lnmp1.3-full.tar.gz  
+tar xzvf lnmp1.3-full.tar.gz  
+cd lnmp1.3-full  
+vi lnmp.conf  
+./install.sh lnmp  
+```
+设置mysql密码，开启innodb，
+mysql 安装 5.7.11
+php 安装 5.6.25
+
+//开放exec，system函数，
+```bash  
+vi /usr/local/php/etc/php.ini  
+```
+以上安装完成后，安装插件
+```bash  
+./addons.sh  
+```
+安装Memcache、imageMagick、opcache  
+安装phalcon
+```bash
+wget http://v1.seowhy.com/cphalcon-3.0.2.tar.gz  
+tar xzvf cphalcon-3.0.2.tar.gz  
+cd cphalcon-3.0.2/build  
+./install  
+```
+配置项目  
+```bash
+cd app  
+mkdir logs  
+mkdir cache  
+mkdir cache/data  
+mkdir cache/metaData  
+mkdir cache/models  
+mkdir cache/views  
+mkdir cache/volt  
+cd ../  
+mkdir public  
+mkdir public/uploads  
+chmod -R 775 ./  
+cp app/config/site.dist.php app/config/site.php  
+cp app/Fesiong.dist.php app/Fesiong.php  
+```
+配置网页转图片工具  
+```bash  
+安装网页转换图片系统  
+//重新记录  
+wget http://v1.seowhy.com/wkhtmltox-0.12.2_linux-centos6-amd64.rpm  
+yum install fontconfig libXrender xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi  
+rpm -ivh wkhtmltox-0.12.2_linux-centos6-amd64.rpm  
+wkhtmltoimage -V  
+//增加字体(服务器需要)  
+#cd /usr/share/fonts  
+#wget http://v1.seowhy.com/SourceHanSans-Normal.otf  
+#mkfontscale  
+#mkfontdir  
+#fc-cache -fv  
+//开放exec，system函数，  
+vi /usr/local/php/etc/php.ini  
+```
+- Windows上安装  
+phalcon的安装参照[phalcon][xampp]  
+apache配置参照[phalcon][apache]  
+**需要安装的组件
+```bash
+- 安装phalcon  
+- 安装memcache  
+- 安装mb_string  
+- 安装mcrypt  
+- 安装Imagick  
+- php版本要求5.5+  
+- mysql要求5.6+  
+```
+
+##网页转图片调试地址
+http://你的本地域名/share/sharecode/代言id  
+设置网页分辨率为750*1334,这个时候看到的效果就是网页转换成图片输出的效果
+
 ##简从系统目录结构
 [link][tree]
 ##简从系统数据库字典
@@ -59,3 +151,5 @@ URL路由规则需要写到对应的路由规则文件中
 [routing]:https://docs.phalconphp.com/zh/latest/reference/routing.html
 [controller]:https://docs.phalconphp.com/zh/latest/reference/controllers.html
 [useingviews]:https://docs.phalconphp.com/zh/latest/reference/views.html
+[xampp]:https://docs.phalconphp.com/zh/latest/reference/xampp.html
+[apache]:https://docs.phalconphp.com/zh/latest/reference/apache.html
